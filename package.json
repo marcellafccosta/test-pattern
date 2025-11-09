@@ -8,13 +8,35 @@
     "coverage": "jest --coverage"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.23.2",
-    "babel-jest": "^29.7.0",
-    "jest": "^29.7.0"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.js$": "babel-jest"
+  "@babel/preset-env": "^7.23.2",
+  "babel-jest": "^29.7.0",
+  "jest": "^29.7.0"
+},
+"babel": {
+  "presets": [
+    ["@babel/preset-env", {
+      "targets": {
+        "node": "current"
+      }
+    }]
+  ]
+},
+"jest": {
+  "testEnvironment": "node",
+  "globals": {
+    "ts-jest": {
+      "useESM": true
     }
+  },
+  "moduleNameMapper": {
+    "^(\\.{1,2}/.*)\\.js$": "$1"
+  },
+  "testMatch": [
+    "**/__tests__/**/*.test.js",
+    "**/src/tests/**/*.test.js"
+  ],
+  "transform": {
+    "^.+\\.js$": "babel-jest"
   }
+}
 }
